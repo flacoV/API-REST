@@ -1,0 +1,24 @@
+[
+  {
+    "id": "706c4da2-a14f-466c-b0d0-ffb3a7e2ab61",
+    "title": "Producto prueba 2",
+    "description": "Descripción prueba3",
+    "code": "PROD001",
+    "price": 10000,
+    "status": true,
+    "stock": 10,
+    "category": "Categoría prueba",
+    "thumbnails": []
+  },
+  {
+    "id": "0c761da1-7193-48f2-9107-4ec6da57363e",
+    "title": "Producto de prueba",
+    "description": "Descripción de prueba",
+    "code": "PROD001",
+    "price": 80000,
+    "status": true,
+    "stock": 59,
+    "category": "Categoría de prueba",
+    "thumbnails": []
+  }
+]
