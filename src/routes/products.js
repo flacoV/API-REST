@@ -5,7 +5,7 @@ const router = express.Router();
 
 const PRODUCTS_FILE = './src/products.json';
 
-// Helper function to read JSON file
+//elper para leer los JSON debido a unos errores que me surgieron 
 const readJSONFile = (file) => {
     try {
         const data = fs.readFileSync(file, 'utf-8');
@@ -16,7 +16,7 @@ const readJSONFile = (file) => {
     }
 };
 
-// Helper function to write JSON file
+//helper para leer los JSON debido a unos errores que me surgieron 
 const writeJSONFile = (file, data) => {
     try {
         fs.writeFileSync(file, JSON.stringify(data, null, 2));
@@ -25,14 +25,14 @@ const writeJSONFile = (file, data) => {
     }
 };
 
-// Ruta GET para listar todos los productos
+// Ruta GET para mostrar todos los productos
 router.get('/', (req, res) => {
     const products = readJSONFile(PRODUCTS_FILE);
     const limit = req.query.limit ? parseInt(req.query.limit) : products.length;
     res.json(products.slice(0, limit));
 });
 
-// Ruta GET para obtener un producto por ID
+// Ruta GET para buscar un producto por id
 router.get('/:pid', (req, res) => {
     const products = readJSONFile(PRODUCTS_FILE);
     const product = products.find(p => p.id === req.params.pid);
@@ -43,7 +43,7 @@ router.get('/:pid', (req, res) => {
     }
 });
 
-// Ruta POST para agregar un nuevo producto
+// Ruta POST para agregar nuevo producto
 router.post('/', (req, res) => {
     const products = readJSONFile(PRODUCTS_FILE);
     const newProduct = {
@@ -63,7 +63,7 @@ router.post('/', (req, res) => {
     res.status(201).json(newProduct);
 });
 
-// Ruta PUT para actualizar un producto por ID
+// Ruta PUT para actualizar un producto segun su id
 router.put('/:pid', (req, res) => {
     const products = readJSONFile(PRODUCTS_FILE);
     const productIndex = products.findIndex(p => p.id === req.params.pid);
@@ -77,7 +77,7 @@ router.put('/:pid', (req, res) => {
     }
 });
 
-// Ruta DELETE para eliminar un producto por ID
+// Ruta DELETE para producto segun su id
 router.delete('/:pid', (req, res) => {
     const products = readJSONFile(PRODUCTS_FILE);
     const productIndex = products.findIndex(p => p.id === req.params.pid);

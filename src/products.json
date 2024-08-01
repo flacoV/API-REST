@@ -14,7 +14,7 @@
     "id": "0c761da1-7193-48f2-9107-4ec6da57363e",
     "title": "Producto de prueba",
     "description": "Descripción de prueba",
-    "code": "PROD001",
+    "code": "PROD002",
     "price": 80000,
     "status": true,
     "stock": 59,

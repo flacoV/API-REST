@@ -5,7 +5,7 @@ const router = express.Router();
 
 const CARTS_FILE = './src/carts.json';
 
-// Helper function to read JSON file
+//helper para leer los JSON debido a unos errores que me surgieron 
 const readJSONFile = (file) => {
     try {
         const data = fs.readFileSync(file, 'utf-8');
@@ -16,7 +16,7 @@ const readJSONFile = (file) => {
     }
 };
 
-// Helper function to write JSON file
+//elper para leer los JSON debido a unos errores que me surgieron 
 const writeJSONFile = (file, data) => {
     try {
         fs.writeFileSync(file, JSON.stringify(data, null, 2));
@@ -25,7 +25,7 @@ const writeJSONFile = (file, data) => {
     }
 };
 
-// Ruta POST para crear un nuevo carrito
+// Ruta POST crea un nuevo carrito
 router.post('/', (req, res) => {
     const carts = readJSONFile(CARTS_FILE);
     const newCart = {
@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
     res.status(201).json(newCart);
 });
 
-// Ruta GET para listar los productos de un carrito por ID
+// Ruta GET para buscar un carrito segun su id
 router.get('/:cid', (req, res) => {
     const carts = readJSONFile(CARTS_FILE);
     const cart = carts.find(c => c.id === req.params.cid);
@@ -49,7 +49,7 @@ router.get('/:cid', (req, res) => {
     }
 });
 
-// Ruta POST para agregar un producto a un carrito
+// Ruta POST para agregar un producto al carrito
 router.post('/:cid/product/:pid', (req, res) => {
     const carts = readJSONFile(CARTS_FILE);
     const cart = carts.find(c => c.id === req.params.cid);
@@ -67,7 +67,7 @@ router.post('/:cid/product/:pid', (req, res) => {
     }
 });
 
-// Ruta DELETE para eliminar un producto de un carrito
+// Ruta DELETE para eliminar un prodcuto en especifico de un carrito
 router.delete('/:cid/product/:pid', (req, res) => {
     const carts = readJSONFile(CARTS_FILE);
     const cart = carts.find(c => c.id === req.params.cid);
@@ -76,9 +76,9 @@ router.delete('/:cid/product/:pid', (req, res) => {
         const productIndex = cart.products.findIndex(p => p.product === req.params.pid);
 
         if (productIndex !== -1) {
-            cart.products.splice(productIndex, 1); // Elimina el producto del array
+            cart.products.splice(productIndex, 1);
             writeJSONFile(CARTS_FILE, carts);
-            res.status(204).send(); // Respuesta exitosa sin contenido
+            res.status(204).send(); 
         } else {
             res.status(404).send({ error: 'Product not found in cart' });
         }
